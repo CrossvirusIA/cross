@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CrossvirusIA::Geocodificador</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="https://materializecss.com/images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="https://materializecss.com/images/favicon/favicon-32x32.png" sizes="32x32">
+    <!--  Android 5 Chrome Color-->
+    <meta name="theme-color" content="#EE6E73">
+    <!-- CSS-->
+    <link href="./Parallax - Materialize_files/prism.css" rel="stylesheet">
+    <link href="./Parallax - Materialize_files/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="./Parallax - Materialize_files/css" rel="stylesheet" type="text/css">
+    <link href="./Parallax - Materialize_files/icon" rel="stylesheet">
+    <!-- if !isDemo-->
+    <!--   script.-->
+    <!--     window.liveSettings = {-->
+    <!--       api_key: "a0b49b34b93844c38eaee15690d86413",-->
+    <!--       picker: "bottom-right",-->
+    <!--       detectlang: true,-->
+    <!--       dynamic: true,-->
+    <!--       autocollect: true-->
+    <!--     };-->
+    <!--   script(src='//cdn.transifex.com/live.js')-->
+  <script async="" src="./Parallax - Materialize_files/analytics.js"></script><script id="twitter-wjs" src="./Parallax - Materialize_files/widgets.js"></script><script id="_carbonads_projs" type="text/javascript" src="./Parallax - Materialize_files/CKYIK27J.json"></script><script charset="utf-8" src="./Parallax - Materialize_files/button.0d6aa7fd095b2a9dd19cc66c7c2ed64b.js"></script>
+</head>
+
+<body>
+     <div id="red" class="block red lighten-1">
+  <nav class="pushpin-demo-nav" data-target="red">
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a href="#" class="brand-logo">CrossvirusIA</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="https://script.google.com/macros/s/AKfycbwJz1GJe6CG8CU-3RW4ugsQq-C-w4RRv8vvQVtmDwf-Lbb5QFFonmDq5CxKYD9gfXtMaw/exec">Configuração</a></li>
+          <li><a href="geocod.html"><strong>Geocodificação e alerta</strong></a></li>
+          <li><a href="dashboard2.html">Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+       
+    <form action="https://script.google.com/macros/s/AKfycbz_DG3mpeKwWbgXmAKqyWxgo3uHAP268Bdf_K8EnWHrmSY5R7osGi-20Bid94zE4M3pZw/exec" id="form" method="post">
+        
+        <div id="data"></div>
+        
+        <br> 
+        
+    <div class="file-field input-field">
+      <div class="btn waves-effect waves-light red lighten-2"> 
+           <span>1.Selecionar arquivo</span>
+        <input id="uploadfile" type="file">
+      </div>
+      
+    </div>
+   
+        ------>
+        
+       
+        <button class="btn-large waves-effect waves-light red lighten-2" id="submit"type="submit" name="action">2.Enviar e geocodificar
+        </button>
+        
+    </form>
+    
+  
+      
+    <script>
+    $('#uploadfile').on("change", function() {
+        var file = this.files[0];
+        var fr = new FileReader();
+        fr.fileName = file.name
+        fr.onload = function(e) {
+            e.target.result
+            html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+            html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
+            html += '<input type="text" name="filename" value="' + e.target.fileName + '" >';
+            $("#data").empty().append(html);
+        }
+        fr.readAsDataURL(file);
+        
+    });
+        
+    </script>
+</body>
+
+</html>
